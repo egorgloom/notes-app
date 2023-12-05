@@ -20,7 +20,7 @@ const persistConfig = {
 }
 
 const rootReducer = combineReducers({
-  task: reducer
+  note: reducer
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)

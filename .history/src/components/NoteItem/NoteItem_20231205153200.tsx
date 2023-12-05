@@ -13,9 +13,10 @@ import { searchTag } from '../../functions/functions';
 
 interface ITodoItem {
     note: INote,
+    value: string,
 }
 
-const TodoItem: FC<ITodoItem> = ({ note }) => {
+const TodoItem: FC<ITodoItem> = ({ note, value }) => {
     const id = note.id;
     const title = note.title
 

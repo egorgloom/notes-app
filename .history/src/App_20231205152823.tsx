@@ -28,6 +28,7 @@ function App() {
      <div className="notes">
      {notesList.note.map((note: INote) => (
           <NoteItem
+          value={value}
             key={note.id}
             note={note}
           />

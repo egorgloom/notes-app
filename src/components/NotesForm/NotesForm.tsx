@@ -12,14 +12,14 @@ interface INotesForm {
 }
 
 const NotesForm: FC<INotesForm> = ({ value, setValue, body, setBody }) => {
-  
 
   const { addTask } = useActions();
 
 
+
   const checkTask = () => {
     if (value.trim().length === 0) {
-      alert('add task')
+      alert('add note')
       setValue('')
     } else {
       addTask({
