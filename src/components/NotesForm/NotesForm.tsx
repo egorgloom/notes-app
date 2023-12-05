@@ -2,26 +2,60 @@ import React, { FC } from 'react';
 
 import { Button } from '@mui/material';
 
+import { useActions } from '../../hooks/useActions';
+
 interface INotesForm {
   value: string,
   setValue: React.Dispatch<React.SetStateAction<string>>,
+  body: string,
+  setBody: React.Dispatch<React.SetStateAction<string>>,
 }
 
-const NotesForm: FC<INotesForm> = ({ value, setValue }) => {
+const NotesForm: FC<INotesForm> = ({ value, setValue, body, setBody }) => {
+  
 
+  const { addTask } = useActions();
+
+
+  const checkTask = () => {
+    if (value.trim().length === 0) {
+      alert('add task')
+      setValue('')
+    } else {
+      addTask({
+        body: body,
+        title: value,
+        id: '',
+        completed: false,
+        isEditing: false
+      })
+      setValue('');
+      setBody('');
+    }
+  }
 
   const handleSubmit = (event: React.FormEvent) => {
-    event.preventDefault()
+    event.preventDefault();
+    checkTask()
   }
 
   return (
     <form onSubmit={handleSubmit} className="notesForm">
       <label>
         <input
-          className="todo-input"
+          className="note-input"
           type="text"
           value={value}
           onChange={(e) => setValue(e.target.value)}
+          placeholder='Title'
+        />
+      </label>
+      <label>
+        <textarea
+          className="note-input"
+          value={body}
+          onChange={(e) => setBody(e.target.value)}
+          placeholder='Body'
         />
       </label>
       <Button style={{
@@ -30,7 +64,8 @@ const NotesForm: FC<INotesForm> = ({ value, setValue }) => {
         border: "none",
         padding: "0.55rem",
         cursor: "pointer"
-      }}>Add</Button>
+      }}
+      type='submit'>Add</Button>
     </form>
   );
 };

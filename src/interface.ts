@@ -1,6 +1,7 @@
 export interface INote {
-    id: number
-    task: string
-    completed: boolean
-    isEditing: boolean
+    id: string,
+    body: string | number,
+    title: string | number,
+    completed: boolean,
+    isEditing: boolean,
 }
