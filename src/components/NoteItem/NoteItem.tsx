@@ -1,4 +1,4 @@
-import { FC, useContext } from 'react';
+import { FC } from 'react';
 
 import { FaRegEdit } from "react-icons/fa";
 import { RiDeleteBin7Line } from "react-icons/ri";
@@ -21,14 +21,13 @@ const TodoItem: FC<ITodoItem> = ({ note }) => {
 
     const { updateTask, deleteTask } = useActions();
 
-    const tag = searchTag(note.title, note.body)
 
     return (
         <div className="note">
             <div className='description'>
             <p>{note.title}</p>
             <p>{note.body}</p>
-            <span>{tag}</span>
+            <span className='tag'>{note.tag}</span>
             </div>
             <div className='functional'>
                 <FaRegEdit onClick={() => updateTask({

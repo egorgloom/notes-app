@@ -10,6 +10,7 @@ import { INote } from './interface';
 
 import NotesForm from './components/NotesForm/NotesForm'
 import NoteItem from './components/NoteItem/NoteItem';
+import TagItem from './components/TagItem/TagItem';
 
 
 
@@ -18,21 +19,24 @@ function App() {
   const [value, setValue] = useState<string>('');
 
   const [body, setBody] = useState<string>('');
-
   const notesList = useSelector((state: StoreState) => state);
-
 
   return (
     <>
-     <NotesForm value={value} setValue={setValue} body={body} setBody={setBody}/>
-     <div className="notes">
-     {notesList.note.map((note: INote) => (
+      <NotesForm value={value} setValue={setValue} body={body} setBody={setBody} />
+      <div className="tagList">
+      {notesList.note.map((note: INote) =>
+      <TagItem note={note}/>
+      )}
+      </div>
+      <div className="notes">
+        {notesList.note.map((note: INote) => (
           <NoteItem
             key={note.id}
             note={note}
           />
-      ))}
-     </div>
+        ))}
+      </div>
     </>
   )
 }

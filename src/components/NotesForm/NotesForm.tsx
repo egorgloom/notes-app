@@ -3,6 +3,7 @@ import React, { FC } from 'react';
 import { Button } from '@mui/material';
 
 import { useActions } from '../../hooks/useActions';
+import { searchTag } from '../../functions/functions';
 
 interface INotesForm {
   value: string,
@@ -15,7 +16,7 @@ const NotesForm: FC<INotesForm> = ({ value, setValue, body, setBody }) => {
 
   const { addTask } = useActions();
 
-
+  const tag = searchTag(value, body)
 
   const checkTask = () => {
     if (value.trim().length === 0) {
@@ -27,7 +28,8 @@ const NotesForm: FC<INotesForm> = ({ value, setValue, body, setBody }) => {
         title: value,
         id: '',
         completed: false,
-        isEditing: false
+        isEditing: false,
+        tag: tag,
       })
       setValue('');
       setBody('');

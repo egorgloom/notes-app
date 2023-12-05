@@ -1,6 +1,8 @@
 import { createSlice, PayloadAction  } from "@reduxjs/toolkit";
 import { v4 as uuidv4 } from 'uuid';
+import { searchTag } from "../functions/functions";
 import { INote } from './../interface';
+
 
 
 
@@ -17,6 +19,7 @@ export const notesSlice = createSlice({
                 title: note.title,
                 completed: false,
                 isEditing: false,
+                tag: searchTag(note.title, note.body)
             }
             state.push(newTask)
         },

@@ -1,3 +1,5 @@
+
+
 export const searchTag = (value1: string, value2: string) => {
 
     let words1 = value1.trim().split(' ');
@@ -5,12 +7,16 @@ export const searchTag = (value1: string, value2: string) => {
 
     let result = words1.concat(words2)
     
-    .filter((word => {
+    .filter((word)=> {
       let startWord = word.startsWith('#');
       if(startWord) {
-      return word.trim()
-      }
-    }))
+      return `<span className="tag">${word}</span>`;
+    }})
     return result.join(' ')
+  }
+
+
+  export const arrayTags = (array: []) => {
+    return array.filter((tag: string) => tag)
   }
 
