@@ -1,0 +1,35 @@
+.note {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  background: white;
+  color: black;
+  padding: 0.75rem 1rem;
+  border-radius: 0.313rem;
+  margin-bottom: 1rem;
+  cursor: pointer;
+  width: calc((100% - 40px) / 3);
+  min-height: 175px;
+
+}
+
+.description {
+  display: flex;
+  gap: 20px;
+}
+
+.description>p {
+  display: block;
+  font-size: 20px;
+}
+
+.functional {
+  margin-top: 0;
+  display: flex;
+  width: 20%;
+}
+
+.tag {
+  color: blue;
+  font-weight: 600
+}

@@ -1,13 +1,15 @@
 import { FC } from 'react';
 
-import { Button } from '@mui/material';
-
 import { useActions } from '../../hooks/useActions';
+
 import { searchTag } from '../../functions/functions';
 
 import { Input } from '@mui/material';
-
+import { Button } from '@mui/material';
 import { TextareaAutosize } from '@mui/base';
+
+import cl from './NotesForm.module.css'
+
 
 
 
@@ -47,12 +49,12 @@ const NotesForm: FC<INotesForm> = ({ value, setValue, body, setBody }) => {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="notesForm">
+    <form onSubmit={handleSubmit} className={cl.notesForm}>
       <h1>Создать заметку</h1>
       <label>
         <Input
-          className="note-input"
-          style={{color: 'white'}}
+          className="noteInput"
+          style={{ color: 'white' }}
           type="text"
           value={value}
           onChange={(e) => setValue(e.target.value)}
@@ -61,20 +63,21 @@ const NotesForm: FC<INotesForm> = ({ value, setValue, body, setBody }) => {
       </label>
       <label>
         <TextareaAutosize
-          className="note-input"
+          className="noteInput"
           value={body}
           onChange={(e) => setBody(e.target.value)}
           placeholder='Body'
         />
       </label>
-      <Button style={{
-        background: "#dd3bc2",
-        color: "#fff",
-        border: "none",
-        padding: "0.55rem",
-        cursor: "pointer"
-      }}
-      type='submit'>Add</Button>
+      <Button
+        style={{
+          background: "#dd3bc2",
+          color: "#fff",
+          border: "none",
+          padding: "0.55rem",
+          cursor: "pointer"
+        }}
+        type='submit'>Add</Button>
     </form>
   );
 };

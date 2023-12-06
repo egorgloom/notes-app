@@ -1,14 +1,16 @@
 import { FC, useState } from 'react';
+
 import { searchTag } from '../../functions/functions';
+
 import { useActions } from '../../hooks/useActions';
+
 import { INote } from '../../interface';
 
 import { Input } from '@mui/material';
-
 import { TextareaAutosize } from '@mui/base';
-
 import { Button } from '@mui/material';
 
+import cl from './EditNoteForm.module.css'
 
 
 interface IEditNoteForm {
@@ -38,34 +40,36 @@ const EditNoteForm: FC<IEditNoteForm> = ({ note }) => {
         isEditing: false,
         tag: tag,
       })
-      // console.log('a', searchTag(editTitleValue, editBodyValue))
+
     }
   }
   return (
-    <form onSubmit={handleSubmit} className="editTaskForm">
+    <form onSubmit={handleSubmit} className={cl.editTaskForm}>
       <h1>Редактирование заметки</h1>
       <label>
         <Input
           style={{ color: 'white' }}
-          className="note-input"
+          className='noteInput'
           value={editTitleValue}
           onChange={(e) => setEditTitleValue(e.target.value)}
         />
       </label>
       <label>
         <TextareaAutosize
-          className="note-input"
+          className='noteInput'
           value={editBodyValue}
           onChange={(e) => setEditBodyValue(e.target.value)}
         />
       </label>
-      <Button type='submit' style={{
-        background: "#dd3bc2",
-        color: "#fff",
-        border: "none",
-        padding: "0.55rem",
-        cursor: "pointer"
-      }} >Add</Button>
+      <Button type='submit'
+        style={{
+          background: "#dd3bc2",
+          color: "#fff",
+          border: "none",
+          padding: "0.55rem",
+          cursor: "pointer"
+        }}
+      >Add</Button>
     </form>
   );
 };

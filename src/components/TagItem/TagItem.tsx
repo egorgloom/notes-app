@@ -7,13 +7,13 @@ interface ITagItem {
   toggleFilter: (item: string) => void,
 }
 
-const TagItem: FC<ITagItem> = ({ note, toggleFilter}) => {
+const TagItem: FC<ITagItem> = ({ note, toggleFilter }) => {
   return (
     <div className='tagItem'>
       <Checkbox
-        onChange={() => toggleFilter( note)}
+        onChange={() => toggleFilter(note)}
       />
-      <label >{note}</label>
+      <label>{note}</label>
     </div>
   );
 };

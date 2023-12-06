@@ -1,0 +1,9 @@
+.notesForm {
+  background: #1A1A40;
+  padding: 1rem;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  margin: 2rem auto;
+  width: 50%;
+}

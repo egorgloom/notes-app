@@ -10,7 +10,7 @@ const rootActions = {
 
 export const useActions = () => {
     const dispatch = useDispatch();
-    return useMemo(()=>
+    return useMemo(() =>
         bindActionCreators(rootActions, dispatch)
-    , [dispatch])
+        , [dispatch])
 }

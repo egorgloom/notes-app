@@ -1,0 +1,11 @@
+.editTaskForm {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 40%;
+  background: #1A1A40;
+  padding: 1rem;
+  border-radius: 5px;
+
+}
