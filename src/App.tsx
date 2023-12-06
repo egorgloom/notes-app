@@ -35,7 +35,7 @@ function App() {
   };
 
   const filteredData = note.filter(item =>
-    item.tag?.some((elem: string) => filters.length ? filters.includes(elem) : true),
+    item.tag.some((elem: string) => filters.length ? filters.includes(elem) : true),
   );
 
   let arrayTags: any[] = findAllTags(note);
