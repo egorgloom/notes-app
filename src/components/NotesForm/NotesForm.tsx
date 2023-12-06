@@ -1,9 +1,15 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 
 import { Button } from '@mui/material';
 
 import { useActions } from '../../hooks/useActions';
 import { searchTag } from '../../functions/functions';
+
+import { Input } from '@mui/material';
+
+import { TextareaAutosize } from '@mui/base';
+
+
 
 interface INotesForm {
   value: string,
@@ -27,7 +33,6 @@ const NotesForm: FC<INotesForm> = ({ value, setValue, body, setBody }) => {
         body: body,
         title: value,
         id: '',
-        completed: false,
         isEditing: false,
         tag: tag,
       })
@@ -43,9 +48,11 @@ const NotesForm: FC<INotesForm> = ({ value, setValue, body, setBody }) => {
 
   return (
     <form onSubmit={handleSubmit} className="notesForm">
+      <h1>Создать заметку</h1>
       <label>
-        <input
+        <Input
           className="note-input"
+          style={{color: 'white'}}
           type="text"
           value={value}
           onChange={(e) => setValue(e.target.value)}
@@ -53,7 +60,7 @@ const NotesForm: FC<INotesForm> = ({ value, setValue, body, setBody }) => {
         />
       </label>
       <label>
-        <textarea
+        <TextareaAutosize
           className="note-input"
           value={body}
           onChange={(e) => setBody(e.target.value)}

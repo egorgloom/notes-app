@@ -1,8 +1,7 @@
 export interface INote {
-    id: string,
+    id: string ,
     body: string,
     title: string,
-    completed: boolean,
     isEditing: boolean,
     tag?: any,
 }

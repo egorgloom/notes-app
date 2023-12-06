@@ -19,6 +19,11 @@ body {
   text-align: center;
 }
 
+h1 {
+  color: white;
+  font-size: 32px;
+  font-weight: 600;
+}
 
 .notes {
   display: flex;
@@ -82,12 +87,15 @@ body {
 }
 
 .tag {
-  color: red;
+  color: blue;
+  font-weight: 600;
 }
 
 .tagList {
   display: flex;
-  width: calc(100% - 100px);
+  width: calc(100% - 200px);
+  align-items: center;
+  justify-content: center;
   margin: 0 auto;
   font-size: 15px;
   height: auto;
@@ -102,3 +110,19 @@ body {
   width: auto;
 }
 
+.editTaskForm {
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 40%;
+  background: #1A1A40;
+  padding: 1rem;
+  border-radius: 5px;
+
+}
+
+.editNoteBlock {
+  margin: 0 auto;
+}

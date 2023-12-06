@@ -6,6 +6,7 @@ import { RiDeleteBin7Line } from "react-icons/ri";
 import { useActions } from './../../hooks/useActions';
 
 import { INote } from '../../interface';
+import { searchTag } from '../../functions/functions';
 
 
 
@@ -21,18 +22,20 @@ const NodeItem: FC<INodeItem> = ({ note }) => {
 
     const { updateTask, deleteTask } = useActions();
 
+    const tag = searchTag(note.title, note.body)
+
     return (
         <div className="note">
             <div className='description'>
             <p>{note.title}</p>
             <p>{note.body}</p>
-            <span className='tag'>{note.tag}</span>
+            <span className='tag'>{tag}</span>
             </div>
             <div className='functional'>
                 <FaRegEdit onClick={() => updateTask({
                     id,
                     title,
-                    completed: false,
+
                     isEditing: false,
                     body: note.body,
                 })} />

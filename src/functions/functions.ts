@@ -11,6 +11,7 @@ export const searchTag = (value1: string, value2: string) => {
     .filter((word)=> {
       let startWord = word.startsWith('#');
       if(startWord) {
+
        arr.push(word)
     }})
     return arr
@@ -30,6 +31,8 @@ export const searchTag = (value1: string, value2: string) => {
     return array
 
   }
+
+
 
 
 

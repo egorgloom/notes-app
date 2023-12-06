@@ -9,9 +9,12 @@ import { StoreState } from './store';
 import NotesForm from './components/NotesForm/NotesForm'
 import NoteItem from './components/NoteItem/NoteItem';
 import TagItem from './components/TagItem/TagItem';
+import EditNoteForm from './components/EditNoteForm/EditNoteForm';
 
 import { findAllTags } from './functions/functions';
 import { INote } from './interface';
+
+
 
 
 
@@ -24,6 +27,7 @@ function App() {
   const [filters, setFilters] = useState<any[]>([]);
 
   const { note } = useSelector((state: StoreState) => state);
+  
 
 
   const toggleFilter = (filter: string) => {
@@ -34,12 +38,11 @@ function App() {
     }
   };
 
-  const filteredData = note.filter(item =>
-    item.tag.some((elem: string) => filters.length ? filters.includes(elem) : true),
+  const filteredData = note.filter(item => filters.length ? 
+    item.tag?.every((elem: string) =>filters.includes(elem)) : item
   );
 
   let arrayTags: any[] = findAllTags(note);
-
 
   return (
     <>
@@ -51,9 +54,13 @@ function App() {
       </div>
       <div className="notes">
           {filteredData.map((item: INote) => (
+            item.isEditing ? 
+            <EditNoteForm note={item} key={item.id}/>
+            : 
             <NoteItem note={item} key={item.id}/>
           ))}
       </div>
+
     </>
   )
 }
