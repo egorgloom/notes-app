@@ -7,7 +7,7 @@ import { useActions } from './../../hooks/useActions';
 
 import { INote } from '../../interface';
 import { searchTag } from '../../functions/functions';
-
+import { coloredTag } from './../../functions/functions';
 
 
 
@@ -18,24 +18,27 @@ interface INodeItem {
 
 const NodeItem: FC<INodeItem> = ({ note }) => {
     const id = note.id;
-    const title = note.title
+    let title = note.title
 
     const { updateTask, deleteTask } = useActions();
 
     const tag = searchTag(note.title, note.body)
+    let coloredTagTitle = coloredTag(note.title);
+    let coloredTagBody = coloredTag(note.body);
 
     return (
         <div className="note">
             <div className='description'>
-            <p>{note.title}</p>
-            <p>{note.body}</p>
+            <p dangerouslySetInnerHTML={{__html: 
+          coloredTagTitle}}></p>
+            <p dangerouslySetInnerHTML={{__html: 
+          coloredTagBody}}></p>
             <span className='tag'>{tag}</span>
             </div>
             <div className='functional'>
                 <FaRegEdit onClick={() => updateTask({
                     id,
                     title,
-
                     isEditing: false,
                     body: note.body,
                 })} />

@@ -27,7 +27,6 @@ h1 {
 
 .notes {
   display: flex;
-  flex-wrap: wrap;
   box-sizing: border-box;
   width: calc(100% - 40px);
   gap: 20px;
@@ -50,7 +49,16 @@ h1 {
 }
 
 .description {
-  min-height: 50px;
+  display: flex;
+  width: 100%;
+  gap: 20px;
+}
+
+.functional {
+  margin-top: 0;
+  display: flex;
+
+  width: 60%;
 }
 
 .notesForm {
@@ -79,12 +87,7 @@ h1 {
 }
 
 
-.functional {
-  margin-top: 0;
-  display: flex;
-  gap: 20px;
-  width: 20%;
-}
+
 
 .tag {
   color: blue;

@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import { FC, useState } from 'react';
 import { searchTag } from '../../functions/functions';
 import { useActions } from '../../hooks/useActions';
 import { INote } from '../../interface';
@@ -16,36 +16,37 @@ interface IEditNoteForm {
 }
 
 const EditNoteForm: FC<IEditNoteForm> = ({ note }) => {
-    
+
   const [editTitleValue, setEditTitleValue] = useState<string>(`${note.title}`);
 
   const [editBodyValue, setEditBodyValue] = useState<string>(`${note.body}`);
 
   const { updateTask } = useActions();
 
-  const tag = searchTag(editTitleValue, editBodyValue)
-  
+  const tag = searchTag(editTitleValue, editBodyValue);
+
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
     if (editTitleValue.trim().length === 0 && editBodyValue.trim().length === 0) {
-        setEditTitleValue(`${note.title}`)
+      setEditTitleValue(`${note.title}`)
       setEditBodyValue(`${note.body}`)
     } else {
       updateTask({
-          id: note.id,
-          title: editTitleValue,
-          body: editBodyValue,
-          isEditing: false,
-          tag: tag
+        id: note.id,
+        title: editTitleValue,
+        body: editBodyValue,
+        isEditing: false,
+        tag: tag,
       })
+      // console.log('a', searchTag(editTitleValue, editBodyValue))
     }
   }
   return (
     <form onSubmit={handleSubmit} className="editTaskForm">
-        <h1>Редактирование заметки</h1>
+      <h1>Редактирование заметки</h1>
       <label>
         <Input
-        style={{color: 'white'}}
+          style={{ color: 'white' }}
           className="note-input"
           value={editTitleValue}
           onChange={(e) => setEditTitleValue(e.target.value)}

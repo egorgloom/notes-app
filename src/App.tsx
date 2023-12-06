@@ -44,6 +44,8 @@ function App() {
 
   let arrayTags: any[] = findAllTags(note);
 
+  console.log(note)
+
   return (
     <>
       <NotesForm value={value} setValue={setValue} body={body} setBody={setBody} />
@@ -53,7 +55,7 @@ function App() {
         )}
       </div>
       <div className="notes">
-          {filteredData.map((item: INote) => (
+          {note.map((item: INote) => (
             item.isEditing ? 
             <EditNoteForm note={item} key={item.id}/>
             : 

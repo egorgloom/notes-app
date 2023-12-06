@@ -32,7 +32,9 @@ export const searchTag = (value1: string, value2: string) => {
 
   }
 
-
+  export function coloredTag(str: string) {
+    return str.replace(/#\w+/g, match => `<span style="color: blue; font-weight: 600">${match} </span>`)
+  }
 
 
 
