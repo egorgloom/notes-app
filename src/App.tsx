@@ -15,9 +15,6 @@ import { findAllTags } from './functions/functions';
 import { INote } from './interface';
 
 
-
-
-
 function App() {
 
   const [value, setValue] = useState<string>('');
@@ -27,7 +24,8 @@ function App() {
   const [filters, setFilters] = useState<any[]>([]);
 
   const { note } = useSelector((state: StoreState) => state);
-  
+
+
 
 
   const toggleFilter = (filter: string) => {
@@ -38,29 +36,36 @@ function App() {
     }
   };
 
-  const filteredData = note.filter(item => filters.length ? 
-    item.tag?.every((elem: string) =>filters.includes(elem)) : item
-  );
+  function getRenderNotes(filters: Array<string>, array: Array<any>) {
+    if (filters.length == 0) {
+      return array
+    }
 
-  let arrayTags: any[] = findAllTags(note);
+    return array.filter((item: INote) =>
+      item.tag.some((elem: string) => filters.length ? filters.includes(elem) : true)
+    )
+  }
 
-  console.log(note)
+
+  const filteredData: INote[] = getRenderNotes(filters, note)
+
+  let arrayTags: Array<string> = findAllTags(note);
 
   return (
     <>
       <NotesForm value={value} setValue={setValue} body={body} setBody={setBody} />
       <div className="tagList">
         {arrayTags.map((item: string, index: number) =>
-          <TagItem note={item} toggleFilter={toggleFilter} key={index}/>
+          <TagItem note={item} toggleFilter={toggleFilter} key={index} />
         )}
       </div>
       <div className="notes">
-          {note.map((item: INote) => (
-            item.isEditing ? 
-            <EditNoteForm note={item} key={item.id}/>
-            : 
-            <NoteItem note={item} key={item.id}/>
-          ))}
+        {filteredData.map((item: INote) => (
+          item.isEditing ?
+            <EditNoteForm note={item} key={item.id} />
+            :
+            <NoteItem note={item} key={item.id} />
+        ))}
       </div>
 
     </>
