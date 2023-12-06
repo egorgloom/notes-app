@@ -6,21 +6,20 @@ import { RiDeleteBin7Line } from "react-icons/ri";
 import { useActions } from './../../hooks/useActions';
 
 import { INote } from '../../interface';
-import { searchTag } from '../../functions/functions';
 
 
 
 
-interface ITodoItem {
+
+interface INodeItem {
     note: INote,
 }
 
-const TodoItem: FC<ITodoItem> = ({ note }) => {
+const NodeItem: FC<INodeItem> = ({ note }) => {
     const id = note.id;
     const title = note.title
 
     const { updateTask, deleteTask } = useActions();
-
 
     return (
         <div className="note">
@@ -43,4 +42,4 @@ const TodoItem: FC<ITodoItem> = ({ note }) => {
     );
 };
 
-export default TodoItem;
+export default NodeItem;

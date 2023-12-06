@@ -6,11 +6,12 @@ import { useSelector } from 'react-redux';
 
 import { StoreState } from './store';
 
-import { INote } from './interface';
-
 import NotesForm from './components/NotesForm/NotesForm'
 import NoteItem from './components/NoteItem/NoteItem';
 import TagItem from './components/TagItem/TagItem';
+
+import { findAllTags } from './functions/functions';
+import { INote } from './interface';
 
 
 
@@ -19,23 +20,39 @@ function App() {
   const [value, setValue] = useState<string>('');
 
   const [body, setBody] = useState<string>('');
-  const notesList = useSelector((state: StoreState) => state);
+
+  const [filters, setFilters] = useState<any[]>([]);
+
+  const { note } = useSelector((state: StoreState) => state);
+
+
+  const toggleFilter = (filter: string) => {
+    if (filters.includes(filter)) {
+      setFilters(filters.filter(f => f !== filter));
+    } else {
+      setFilters([...filters, filter]);
+    }
+  };
+
+  const filteredData = note.filter(item =>
+    item.tag?.some((elem: string) => filters.length ? filters.includes(elem) : true),
+  );
+
+  let arrayTags: any[] = findAllTags(note);
+
 
   return (
     <>
       <NotesForm value={value} setValue={setValue} body={body} setBody={setBody} />
       <div className="tagList">
-      {notesList.note.map((note: INote) =>
-      <TagItem note={note}/>
-      )}
+        {arrayTags.map((item: string, index: number) =>
+          <TagItem note={item} toggleFilter={toggleFilter} key={index}/>
+        )}
       </div>
       <div className="notes">
-        {notesList.note.map((note: INote) => (
-          <NoteItem
-            key={note.id}
-            note={note}
-          />
-        ))}
+          {filteredData.map((item: INote) => (
+            <NoteItem note={item} key={item.id}/>
+          ))}
       </div>
     </>
   )

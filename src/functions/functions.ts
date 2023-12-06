@@ -1,22 +1,38 @@
+import { INote } from "../interface";
 
 
 export const searchTag = (value1: string, value2: string) => {
 
     let words1 = value1.trim().split(' ');
     let words2 = value2.trim().split(' ');
+    let arr: any[] = [];
 
-    let result = words1.concat(words2)
-    
+    words1.concat(words2)
     .filter((word)=> {
       let startWord = word.startsWith('#');
       if(startWord) {
-      return `<span className="tag">${word}</span>`;
+       arr.push(word)
     }})
-    return result.join(' ')
+    return arr
   }
 
 
-  export const arrayTags = (array: []) => {
-    return array.filter((tag: string) => tag)
+  export const findAllTags = (arr: INote[]) => {
+
+    let result: any[] = []
+
+    arr
+      .map(elem => elem.tag)
+      .forEach(array =>
+        result = result.concat(array)
+      );
+    let array = [...new Set(result)]
+    return array
+
   }
+
+
+
+
+
 

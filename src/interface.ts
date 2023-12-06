@@ -4,5 +4,5 @@ export interface INote {
     title: string,
     completed: boolean,
     isEditing: boolean,
-    tag?: string,
+    tag?: any,
 }
