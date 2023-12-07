@@ -21,12 +21,14 @@ const NodeItem: FC<INodeItem> = ({ note }) => {
     let id = note.id;
     let title = note.title
 
-    const { updateTask, deleteTask } = useActions();
+    const { updateTask, deleteTask} = useActions();
 
     const tag = searchTag(note.title, note.body)
 
     let coloredTagTitle = coloredTag(note.title);
     let coloredTagBody = coloredTag(note.body);
+
+
 
     return (
         <Box sx={{

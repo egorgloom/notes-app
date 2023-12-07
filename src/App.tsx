@@ -31,8 +31,6 @@ function App() {
   const { note } = useSelector((state: StoreState) => state);
 
 
-
-
   const toggleFilter = (filter: string) => {
     if (filters.includes(filter)) {
       setFilters(filters.filter(f => f !== filter));
@@ -41,7 +39,14 @@ function App() {
     }
   };
 
+  let filteredData: INote[] = getRenderNotes(filters, note)
+
+
+
   function getRenderNotes(filters: Array<string>, array: Array<INote>) {
+    // console.log("filters", filters)
+    // console.log("array", array)
+
     if (filters.length == 0) {
       return array
     }
@@ -49,31 +54,39 @@ function App() {
     return array.filter((item: INote) =>
       item.tag.some((elem: string) => filters.length ? filters.includes(elem) : true)
     )
+
   }
 
+  // const resetFilters = () => {
+  //   setFilters([])
+  // }
 
-  const filteredData: INote[] = getRenderNotes(filters, note)
+
 
   let arrayTags: Array<string> = findAllTags(note);
 
+
+
   return (
     <>
-    <ThemeProvider theme={theme}>
-    <NotesForm value={value} setValue={setValue} body={body} setBody={setBody} />
-      <div className="tagList">
-        {arrayTags.map((item: string, index: number) =>
-          <TagItem note={item} toggleFilter={toggleFilter} key={index} />
-        )}
-      </div>
-      <div className="notes">
-        {filteredData.map((item: INote) => (
-          item.isEditing ?
-            <EditNoteForm note={item} key={item.id} />
-            :
-            <NoteItem note={item} key={item.id} />
-        ))}
-      </div>
-    </ThemeProvider>
+      <ThemeProvider theme={theme}>
+        {/* <button onClick={()=> resetFilters()}>reset</button> */}
+        <NotesForm value={value} setValue={setValue} body={body} setBody={setBody} />
+        <div className="tagList">
+          {arrayTags.map((item: string, index: number) =>
+            <TagItem note={item} toggleFilter={toggleFilter} key={index} />
+          )}
+        </div>
+        <div className="notes">
+          {filteredData.map((item: INote) => (
+
+            item.isEditing ?
+              <EditNoteForm note={item} key={item.id} />
+              :
+              <NoteItem note={item} key={item.id} />
+          ))}
+        </div>
+      </ThemeProvider>
     </>
   )
 }

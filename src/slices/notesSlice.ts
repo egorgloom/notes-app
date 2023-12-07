@@ -37,6 +37,9 @@ export const notesSlice = createSlice({
                 return elem
             })
         }
+        // updateFilters: (state, {payload: filter}: PayloadAction<any>) => {
+        //     state.filter((elem) => elem.tag !== filter)
+        // }
     }
 })
 
