@@ -55,6 +55,7 @@ const NodeItem: FC<INodeItem> = ({ note }) => {
                         title,
                         isEditing: false,
                         body: note.body,
+                        tag: tag
                     })} />
                     <DeleteIcon
                     style={{color: 'white'}}
