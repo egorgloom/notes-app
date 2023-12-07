@@ -12,7 +12,12 @@ import TagItem from './components/TagItem/TagItem';
 import EditNoteForm from './components/EditNoteForm/EditNoteForm';
 
 import { findAllTags } from './functions/functions';
+
 import { INote } from './interface';
+
+import { ThemeProvider } from '@emotion/react';
+
+import { theme } from './theme/theme';
 
 
 function App() {
@@ -36,7 +41,7 @@ function App() {
     }
   };
 
-  function getRenderNotes(filters: Array<string>, array: Array<any>) {
+  function getRenderNotes(filters: Array<string>, array: Array<INote>) {
     if (filters.length == 0) {
       return array
     }
@@ -53,7 +58,8 @@ function App() {
 
   return (
     <>
-      <NotesForm value={value} setValue={setValue} body={body} setBody={setBody} />
+    <ThemeProvider theme={theme}>
+    <NotesForm value={value} setValue={setValue} body={body} setBody={setBody} />
       <div className="tagList">
         {arrayTags.map((item: string, index: number) =>
           <TagItem note={item} toggleFilter={toggleFilter} key={index} />
@@ -67,7 +73,7 @@ function App() {
             <NoteItem note={item} key={item.id} />
         ))}
       </div>
-
+    </ThemeProvider>
     </>
   )
 }

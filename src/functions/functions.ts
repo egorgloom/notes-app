@@ -33,7 +33,7 @@ export const findAllTags = (arr: INote[]) => {
 }
 
 export function coloredTag(str: string) {
-  return str.replace(/#\w+/g, match => `<span style="color: blue; font-weight: 600">${match} </span>`)
+  return str.replace(/#\w+/g, match => `<span style="color: rgb(33,209,255); font-weight: 600">${match} </span>`)
 }
 
 

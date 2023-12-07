@@ -6,8 +6,8 @@ import { useActions } from '../../hooks/useActions';
 
 import { INote } from '../../interface';
 
-import { Input } from '@mui/material';
-import { TextareaAutosize } from '@mui/base';
+import { TextField } from '@mui/material';
+
 import { Button } from '@mui/material';
 
 import cl from './EditNoteForm.module.css'
@@ -45,31 +45,25 @@ const EditNoteForm: FC<IEditNoteForm> = ({ note }) => {
   }
   return (
     <form onSubmit={handleSubmit} className={cl.editTaskForm}>
-      <h1>Редактирование заметки</h1>
-      <label>
-        <Input
-          style={{ color: 'white' }}
-          className='noteInput'
-          value={editTitleValue}
-          onChange={(e) => setEditTitleValue(e.target.value)}
-        />
-      </label>
-      <label>
-        <TextareaAutosize
-          className='noteInput'
-          value={editBodyValue}
-          onChange={(e) => setEditBodyValue(e.target.value)}
-        />
-      </label>
+      <h1>Editing note</h1>
+      <TextField
+        autoComplete='off'
+        id="filled-basic"
+        label="Title"
+        variant="filled"
+        value={editTitleValue}
+        onChange={(e) => setEditTitleValue(e.target.value)}
+      />
+      <TextField
+        variant='filled'
+        autoComplete='off'
+        multiline
+        value={editBodyValue}
+        onChange={(e) => setEditBodyValue(e.target.value)}
+        label="Note"
+      />
       <Button type='submit'
-        style={{
-          background: "#dd3bc2",
-          color: "#fff",
-          border: "none",
-          padding: "0.55rem",
-          cursor: "pointer"
-        }}
-      >Add</Button>
+      >Add note</Button>
     </form>
   );
 };

@@ -1,24 +1,10 @@
-.note {
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
-  background: white;
-  color: black;
-  padding: 0.75rem 1rem;
-  border-radius: 0.313rem;
-  margin-bottom: 1rem;
-  cursor: pointer;
-  width: calc((100% - 40px) / 3);
-  min-height: 175px;
-
-}
-
 .description {
   display: flex;
   gap: 20px;
 }
 
 .description>p {
+  color: rgb(228,226,228);
   display: block;
   font-size: 20px;
 }
@@ -29,7 +15,13 @@
   width: 20%;
 }
 
+.bodyNote{
+  font-size: 18px;
+  color: rgb(228,226,228);
+  font-weight: 400;
+}
+
 .tag {
-  color: blue;
+  color: rgb(33,209,255);
   font-weight: 600
 }

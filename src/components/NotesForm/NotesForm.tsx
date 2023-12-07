@@ -1,14 +1,12 @@
-import { FC } from 'react';
+import { FC, SetStateAction } from 'react';
 
 import { useActions } from '../../hooks/useActions';
 
 import { searchTag } from '../../functions/functions';
 
-import { Input } from '@mui/material';
+import { Box, TextField } from '@mui/material';
 import { Button } from '@mui/material';
-import { TextareaAutosize } from '@mui/base';
 
-import cl from './NotesForm.module.css'
 
 
 
@@ -49,36 +47,38 @@ const NotesForm: FC<INotesForm> = ({ value, setValue, body, setBody }) => {
   }
 
   return (
-    <form onSubmit={handleSubmit} className={cl.notesForm}>
-      <h1>Создать заметку</h1>
-      <label>
-        <Input
-          className="noteInput"
-          style={{ color: 'white' }}
-          type="text"
-          value={value}
-          onChange={(e) => setValue(e.target.value)}
-          placeholder='Title'
+    <Box sx={{
+      background: 'rgb(66,45,167)',
+      padding: '1rem',
+      borderRadius: '5px',
+      display: 'flex',
+      flexDirection: 'column',
+      margin: '2rem auto',
+      width: '50%',
+    }}>
+      <form onSubmit={handleSubmit} >
+        <h1>Create note</h1>
+        <TextField 
+        autoComplete='off'
+        id="filled-basic" 
+        label="Title" 
+        variant="filled" 
+        value={value}
+        onChange={(e: { target: { value: SetStateAction<string>; }; }) => setValue(e.target.value)}
         />
-      </label>
-      <label>
-        <TextareaAutosize
-          className="noteInput"
-          value={body}
-          onChange={(e) => setBody(e.target.value)}
-          placeholder='Body'
-        />
-      </label>
-      <Button
-        style={{
-          background: "#dd3bc2",
-          color: "#fff",
-          border: "none",
-          padding: "0.55rem",
-          cursor: "pointer"
-        }}
-        type='submit'>Add</Button>
-    </form>
+          <TextField
+          variant='filled'
+          autoComplete='off'
+          multiline
+            value={body}
+            onChange={(e: { target: { value: SetStateAction<string>; }; }) => setBody(e.target.value)}
+            label="Note"
+          />
+        <Button
+          type='submit'>Add note</Button>
+      </form>
+    </Box>
+
   );
 };
 
