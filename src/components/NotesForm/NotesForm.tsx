@@ -1,4 +1,4 @@
-import { FC, SetStateAction } from 'react';
+import { FC} from 'react';
 
 import { useActions } from '../../hooks/useActions';
 
@@ -64,14 +64,14 @@ const NotesForm: FC<INotesForm> = ({ value, setValue, body, setBody }) => {
         label="Title" 
         variant="filled" 
         value={value}
-        onChange={(e: { target: { value: SetStateAction<string>; }; }) => setValue(e.target.value)}
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setValue(e.target.value)}
         />
           <TextField
           variant='filled'
           autoComplete='off'
           multiline
             value={body}
-            onChange={(e: { target: { value: SetStateAction<string>; }; }) => setBody(e.target.value)}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setBody(e.target.value)}
             label="Note"
           />
         <Button

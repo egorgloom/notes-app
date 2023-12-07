@@ -52,14 +52,14 @@ const EditNoteForm: FC<IEditNoteForm> = ({ note }) => {
         label="Title"
         variant="filled"
         value={editTitleValue}
-        onChange={(e: { target: { value: SetStateAction<string>; }; }) => setEditTitleValue(e.target.value)}
+        onChange={(e: React.ChangeEvent<HTMLInputElement> ) => setEditTitleValue(e.target.value)}
       />
       <TextField
         variant='filled'
         autoComplete='off'
         multiline
         value={editBodyValue}
-        onChange={(e: { target: { value: SetStateAction<string>; }; }) => setEditBodyValue(e.target.value)}
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEditBodyValue(e.target.value)}
         label="Note"
       />
       <Button type='submit'
