@@ -22,6 +22,10 @@
 }
 
 .tag {
+  margin-top: 30px;
+  font-size: 12px;
+  display: flex;
+  flex-wrap: wrap;
   color: rgb(33,209,255);
   font-weight: 600
 }

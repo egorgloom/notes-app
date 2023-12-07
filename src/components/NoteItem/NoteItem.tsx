@@ -65,7 +65,7 @@ const NodeItem: FC<INodeItem> = ({ note }) => {
                 __html:
                     coloredTagBody
             }} className={cl.bodyNote}></p>
-            <span className={cl.tag}>{tag}</span>
+            <div className={cl.tag}>{tag?.map((elem: string) => <span key={elem}>{elem}</span>)}</div>
         </Box>
     );
 };

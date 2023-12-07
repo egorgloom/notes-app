@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { FC, SetStateAction, useState } from 'react';
 
 import { searchTag } from '../../functions/functions';
 
@@ -52,14 +52,14 @@ const EditNoteForm: FC<IEditNoteForm> = ({ note }) => {
         label="Title"
         variant="filled"
         value={editTitleValue}
-        onChange={(e) => setEditTitleValue(e.target.value)}
+        onChange={(e: { target: { value: SetStateAction<string>; }; }) => setEditTitleValue(e.target.value)}
       />
       <TextField
         variant='filled'
         autoComplete='off'
         multiline
         value={editBodyValue}
-        onChange={(e) => setEditBodyValue(e.target.value)}
+        onChange={(e: { target: { value: SetStateAction<string>; }; }) => setEditBodyValue(e.target.value)}
         label="Note"
       />
       <Button type='submit'
