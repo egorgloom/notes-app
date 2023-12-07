@@ -40,7 +40,7 @@ const EditNoteForm: FC<IEditNoteForm> = ({ note }) => {
         isEditing: false,
         tag: tag,
       })
-
+     
     }
   }
   return (
@@ -63,7 +63,7 @@ const EditNoteForm: FC<IEditNoteForm> = ({ note }) => {
         label="Note"
       />
       <Button type='submit'
-      >Add note</Button>
+      >Edit</Button>
     </form>
   );
 };
